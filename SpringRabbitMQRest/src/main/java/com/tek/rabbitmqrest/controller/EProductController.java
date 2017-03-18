@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tek.rabbitmqrest.model.EProduct;
 import com.tek.rabbitmqrest.service.EProductService;
 
+import io.swagger.annotations.Api;
+
 @RestController
+@RequestMapping(value="/v1/app")
+@Api(value="RabbitMQ2", description="This service is for crud operation for saving EProduct to DB")
 public class EProductController {
 	
 	@Autowired
@@ -18,8 +22,6 @@ public class EProductController {
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public void saveEProduct(@RequestBody EProduct eProduct) {
 	
-		System.out.println(eProduct);
-		System.out.println("iside EProd Controller");
 		service.saveProduct(eProduct);
 		
 	}
